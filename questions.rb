@@ -29,6 +29,15 @@ class Questions
     # questions_data.map { |question_data| Questions.new(question_data) }
     Questions.new(questions_data.first)
   end
+
+
+
+  def author
+  end
+
+  def replies
+    #using replies.find_by_question_id
+  end
 end
 
 
