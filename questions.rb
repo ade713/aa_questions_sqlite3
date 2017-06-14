@@ -1,4 +1,4 @@
-
+require_relative 'users'
 require_relative 'questions_db'
 
 class Questions
@@ -33,10 +33,11 @@ class Questions
 
 
   def author
+    User.find_by_user_id(@author_id)
   end
 
   def replies
-    #using replies.find_by_question_id
+    Replies.find_by_question_id(@id)
   end
 end
 

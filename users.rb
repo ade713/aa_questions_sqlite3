@@ -31,12 +31,22 @@ class User
     Questions.find_by_author_id(@id)
   end
 
+  def authored_replies
+    Replies.find_by_user_id(@id)
+  end
+
+  def self.find_by_user_id(id)
+    user_data = QuestionsDBConnection.instance.execute(<<-SQL, id)
+      SELECT
+        *
+      FROM
+        users
+      WHERE
+        id = ?
+    SQL
+    User.new(user_data.first)
+  end
 
 
-
-
-#   def authored_replies()
-# #using Replies.find_by_user_id
-#   end
 
 end
